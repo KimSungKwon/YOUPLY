@@ -3,6 +3,7 @@ import PostList from '../../components/posts/PostList';
 import { listPosts } from '../../modules/posts';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { changeField } from '../../modules/user';
 import qs from 'qs';
 
 const PostListContainer = ({ match, location }) => {
@@ -26,8 +27,12 @@ const PostListContainer = ({ match, location }) => {
         dispatch(listPosts({ page, searchKeyword, searchType }));
     }, [dispatch, location.search]);
 
+    const logoutHandler = () => {
+        dispatch(changeField({ key: 'user', value: null }));
+    }
+
     return (
-        <PostList loading={loading} posts={posts} error={error} user={user} />
+        <PostList loading={loading} posts={posts} error={error} user={user} logoutHandler={logoutHandler} />
     );
 };
 

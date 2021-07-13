@@ -8,7 +8,7 @@ const SearchForm = styled.form`
     display: flex;
     justify-content: center;
     
-    width: 70rem;
+    width: 62rem;
     .form-select {
         padding: 12px;
         font-size: 1rem;

@@ -38,8 +38,11 @@ const HeaderBlock = styled.div`
         width: 190.925px;
         height: 43.2px;
         margin-top: 15px;
-        margin-right: 30px;
+        margin-right: 0.5rem;
         font-weight: 540;
+    }
+    .header-btn {
+
     }
 `;
 
@@ -127,7 +130,7 @@ const PostItem = ({ post }) => {
     );
 };
 
-const PostList = ({ posts, loading, error, user }) => {
+const PostList = ({ posts, loading, error, user, logoutHandler }) => {
     if (error ) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
@@ -142,9 +145,14 @@ const PostList = ({ posts, loading, error, user }) => {
             <Link to="/" className="logo">YOUPLY</Link>
             <SearchBar />
             {user ? 
-                (<div className="logged">
+                (
+                <>
+                <div className="logged">
                     {user.username}님 안녕하세요.
-                </div>) 
+                </div>
+                <Button className="header-btn" onClick={logoutHandler}>로그아웃</Button>
+                </>
+                ) 
                 : 
                 (<div className="login">
                     <GoogleLoginButton />

@@ -35,6 +35,30 @@ const MainBlock = styled.div`
 
 `;
 
+const HeaderBlock = styled.div`
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    .login {
+        align-self: flex-end;
+        margin-top: 15px;
+        margin-right: 30px;
+    }
+    .logged {
+        align-self: flex-end;
+        width: 190.925px;
+        height: 43.2px;
+        margin-top: 15px;
+        margin-right: 0.5rem;
+        font-weight: 540;
+    }
+
+    .header-btn {
+        margin-top: 14px;
+        margin-right: 1rem;
+    }
+`;
+
 const ButtonBlock = styled.div`
     display: flex;
     margin-top: 2rem;
@@ -42,19 +66,27 @@ const ButtonBlock = styled.div`
     justify-content: space-between;
 `;
 
-const MainViewer = ({ user }) => {
+const MainViewer = ({ user, logoutHandler }) => {
     
     return (
-        <MainBlock>
+        <>
+        <HeaderBlock>
             {user ? 
-                (<div className="logged">
-                {user.username}님 안녕하세요.
-                </div>) 
-                : 
-                (<div className="login">
-                    <GoogleLoginButton />
-                </div>)
+                    (
+                    <>
+                    <div className="logged">
+                    {user.username}님 안녕하세요.
+                    </div>
+                    <Button className="header-btn" onClick={logoutHandler}>로그아웃</Button>
+                    </>
+                    ) 
+                    : 
+                    (<div className="login">
+                        <GoogleLoginButton />
+                    </div>)
             }
+        </HeaderBlock>
+        <MainBlock>
             <h1 className="logo">YOUPLY</h1>
             <SearchBar />
             <ButtonBlock>
@@ -64,6 +96,7 @@ const MainViewer = ({ user }) => {
                 }
             </ButtonBlock>
         </MainBlock>
+        </>
     )
 };
 

@@ -86,7 +86,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
                         <iframe 
                             width="800" 
                             height="450" 
-                            src={`http://www.youtube.com/embed/videoseries?list=${post.selectedPL}`}
+                            src={`https://www.youtube.com/embed/videoseries?list=${post.selectedPL}`}
                             frameBorder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>

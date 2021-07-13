@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MainViewer from '../../components/main/MainViewer';
-import { changeField, initialize } from '../../modules/main';
+import { changeField } from '../../modules/user';
 
 const MainViewerContainer = () => {
     const dispatch = useDispatch();
@@ -9,11 +9,12 @@ const MainViewerContainer = () => {
         user: user.user
     }));
 
-    const onChangeField = useCallback(payload => dispatch(changeField(payload)),    
-        [dispatch]
-    );
+    const logoutHandler = () => {
+        dispatch(changeField({ key: 'user', value: null }));
+    }
     
-    return <MainViewer user={user} onChangeField={onChangeField} />
+    
+    return <MainViewer user={user} logoutHandler={logoutHandler} />
 }
 
 export default MainViewerContainer;
